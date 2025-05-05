@@ -1,7 +1,7 @@
 -- [[BASE]]
 
 -- File edit chortcuts
-vim.keymap.set('n', '<Leader>ez', ':e ~/.zsh', { desc = 'Edit zsh files' })
+vim.keymap.set('n', '<Leader>ze', ':e ~/.zsh<CR>', { desc = 'Edit zsh files' })
 
 -- Toggles
 vim.keymap.set('n', '<Leader>#', ':setlocal number! relativenumber!<CR>')
@@ -27,8 +27,8 @@ vim.keymap.set('n', '<Leader>sH', '<C-w>t<C-w>K')
 vim.keymap.set('n', '<Leader>sV', '<C-w>t<C-w>H')
 
 -- Buffer movement
-vim.keymap.set('n', '<Leader>]', ':bn<CR>')
-vim.keymap.set('n', '<Leader>[', ':bp<CR>')
+vim.keymap.set('n', '<Leader>.', ':bn<CR>')
+vim.keymap.set('n', '<Leader>,', ':bp<CR>')
 vim.keymap.set('n', '<Leader>b', ':ls<CR>:b<Space>')
 
 -- Move line position

@@ -3,9 +3,6 @@ vim.g.projects_dir = vim.env.HOME .. '/code'
 vim.g.personal_projects_dir = vim.g.projects_dir .. '/sandbox'
 vim.g.work_projects_dir = vim.g.projects_dir .. '/work'
 
--- Colorscheme
-vim.cmd.colorscheme 'catppuccin-mocha'
-
 -- Set nerd font
 vim.g.have_nerd_font = true
 
@@ -22,7 +19,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         lazypath,
     }
 end
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp = vim.opt.rtp ^ lazypath
 
 ---@type LazySpec
 local plugins = 'plugins'
@@ -42,14 +39,13 @@ require('lazy').setup(plugins, {
     ui = { border = 'rounded' },
     dev = { path = vim.g.projects_dir },
     install = {
-        -- Do not automatically install on startup
-        missing = false,
+        -- Automatically install on startup
+        missing = true,
     },
     -- Don't bother me when tweaking plugins
     change_detection = { notify = false },
-    -- None of my plugins use luarocks so disable this
     rocks = {
-        enabled = false,
+        enabled = true,
     },
     performance = {
         rtp = {
@@ -67,7 +63,11 @@ require('lazy').setup(plugins, {
     },
 })
 
+-- FIXME: module 'vim._extui' not found
 -- Enable the new experimental command-line features
-require('vim._extui').enable {}
+-- require('vim._extui').enable {}
+
+-- Colorscheme
+vim.cmd.colorscheme 'moonlight'
 
 -- vim: ts=2 sts=2 sw=2 et
