@@ -15,6 +15,7 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
+-- NOTE: I don't like this, but you might
 -- vim.api.nvim_create_autocmd('FileType', {
 --     group = vim.api.nvim_create_augroup(user .. '/close_with_q', { clear = true }),
 --     desc = 'Close with <q>',
@@ -45,13 +46,14 @@ vim.api.nvim_create_autocmd('VimEnter', {
     end,
 })
 
-vim.api.nvim_create_autocmd('CmdwinEnter', {
-    group = vim.api.nvim_create_augroup(user .. '/execute_cmd_and_stay', { clear = true }),
-    desc = 'Execute command and stay in the command-line window',
-    callback = function(args)
-        vim.keymap.set({ 'n', 'i' }, '<S-CR>', '<cr>q:', { buffer = args.buf })
-    end,
-})
+-- NOTE: I don't like this, but you might
+-- vim.api.nvim_create_autocmd('CmdwinEnter', {
+--     group = vim.api.nvim_create_augroup(user .. '/execute_cmd_and_stay', { clear = true }),
+--     desc = 'Execute command and stay in the command-line window',
+--     callback = function(args)
+--         vim.keymap.set({ 'n', 'i' }, '<S-CR>', '<cr>q:', { buffer = args.buf })
+--     end,
+-- })
 
 vim.api.nvim_create_autocmd('BufReadPost', {
     group = vim.api.nvim_create_augroup(user .. '/last_location', { clear = true }),
@@ -65,32 +67,33 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     end,
 })
 
-local line_numbers_group = vim.api.nvim_create_augroup(user .. '/toggle_line_numbers', {})
-vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'CmdlineLeave', 'WinEnter' }, {
-    group = line_numbers_group,
-    desc = 'Toggle relative line numbers on',
-    callback = function()
-        if vim.wo.nu and not vim.startswith(vim.api.nvim_get_mode().mode, 'i') then
-            vim.wo.relativenumber = true
-        end
-    end,
-})
-vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'CmdlineEnter', 'WinLeave' }, {
-    group = line_numbers_group,
-    desc = 'Toggle relative line numbers off',
-    callback = function(args)
-        if vim.wo.nu then
-            vim.wo.relativenumber = false
-        end
-
-        -- Redraw here to avoid having to first write something for the line numbers to update.
-        if args.event == 'CmdlineEnter' then
-            if not vim.tbl_contains({ '@', '-' }, vim.v.event.cmdtype) then
-                vim.cmd.redraw()
-            end
-        end
-    end,
-})
+-- NOTE: I don't like this, but you might
+-- local line_numbers_group = vim.api.nvim_create_augroup(user .. '/toggle_line_numbers', {})
+-- vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'CmdlineLeave', 'WinEnter' }, {
+--     group = line_numbers_group,
+--     desc = 'Toggle relative line numbers on',
+--     callback = function()
+--         if vim.wo.nu and not vim.startswith(vim.api.nvim_get_mode().mode, 'i') then
+--             vim.wo.relativenumber = true
+--         end
+--     end,
+-- })
+-- vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'CmdlineEnter', 'WinLeave' }, {
+--     group = line_numbers_group,
+--     desc = 'Toggle relative line numbers off',
+--     callback = function(args)
+--         if vim.wo.nu then
+--             vim.wo.relativenumber = false
+--         end
+--
+--         -- Redraw here to avoid having to first write something for the line numbers to update.
+--         if args.event == 'CmdlineEnter' then
+--             if not vim.tbl_contains({ '@', '-' }, vim.v.event.cmdtype) then
+--                 vim.cmd.redraw()
+--             end
+--         end
+--     end,
+-- })
 
 vim.api.nvim_create_autocmd('FileType', {
     group = vim.api.nvim_create_augroup(user .. '/treesitter_folding', { clear = true }),
@@ -113,11 +116,12 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
-vim.api.nvim_create_autocmd({ 'BufDelete', 'BufWipeout' }, {
-    group = vim.api.nvim_create_augroup(user .. '/wshada_on_buf_delete', { clear = true }),
-    desc = 'Write to ShaDa when deleting/wiping out buffers',
-    command = 'wshada',
-})
+-- NOTE: I don't like this, but you might
+-- vim.api.nvim_create_autocmd({ 'BufDelete', 'BufWipeout' }, {
+--     group = vim.api.nvim_create_augroup(user .. '/wshada_on_buf_delete', { clear = true }),
+--     desc = 'Write to ShaDa when deleting/wiping out buffers',
+--     command = 'wshada',
+-- })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     group = vim.api.nvim_create_augroup(user .. '/yank_highlight', { clear = true }),

@@ -12,7 +12,7 @@ vim.keymap.set('n', '<Leader><', ':setlocal wrap!<CR>:setlocal wrap?<CR>', { des
 vim.keymap.set('n', '<Leader>F', ':file<CR>', { desc = 'Display filename' })
 
 -- Tag jump
-vim.keymap.set('n', '<Leader>g', 'g<C-]>', { desc = 'Jump to tag' })
+vim.keymap.set('n', '<Leader>tg', 'g<C-]>', { desc = 'Jump to tag' })
 
 -- Splits
 vim.keymap.set('n', '<Leader>sh', ':split<CR>', { desc = 'Create horizontal split' })
@@ -114,7 +114,7 @@ vim.keymap.set({ 's', 'i', 'n', 'v' }, '<C-s>', '<esc>:w<cr>', { desc = 'Exit in
 vim.keymap.set({ 's', 'i', 'n', 'v' }, '<C-S-s>', '<esc>:wa<cr>', { desc = 'Exit insert mode and save all changes.' })
 
 -- Other writes and quits
-vim.keymap.set('n', '<Leader>q', ':q<CR>', { desc = 'Quit buffer' })
+vim.keymap.set('n', '<Leader>q', ':q<CR>', { desc = 'Close single buffer' })
 vim.keymap.set('n', '<Leader>Q', ':qa<CR>', { desc = 'Quit all buffers' })
 vim.keymap.set('n', '<Leader>w', ':w<CR>', { desc = 'Write buffer' })
 vim.keymap.set('n', '<Leader>W', ':wa<CR>', { desc = 'Write all buffers' })
