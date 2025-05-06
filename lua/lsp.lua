@@ -23,7 +23,8 @@ local function on_attach(client, bufnr)
         vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
     end
 
-    require('lightbulb').attach_lightbulb(bufnr, client.id)
+    -- NOTE: Not sure what this is for
+    -- require('lightbulb').attach_lightbulb(bufnr, client.id)
 
     keymap('gra', '<cmd>FzfLua lsp_code_actions<cr>', 'vim.lsp.buf.code_action()', { 'n', 'x' })
 
@@ -73,22 +74,23 @@ local function on_attach(client, bufnr)
         end, 'Signature help', 'i')
     end
 
-    if client:supports_method(methods.textDocument_documentHighlight) then
-        local under_cursor_highlights_group =
-            vim.api.nvim_create_augroup(user .. '/cursor_highlights', { clear = false })
-        vim.api.nvim_create_autocmd({ 'CursorHold', 'InsertLeave' }, {
-            group = under_cursor_highlights_group,
-            desc = 'Highlight references under the cursor',
-            buffer = bufnr,
-            callback = vim.lsp.buf.document_highlight,
-        })
-        vim.api.nvim_create_autocmd({ 'CursorMoved', 'InsertEnter', 'BufLeave' }, {
-            group = under_cursor_highlights_group,
-            desc = 'Clear highlight references',
-            buffer = bufnr,
-            callback = vim.lsp.buf.clear_references,
-        })
-    end
+    -- NOTE: I don't like this, but you might
+    -- if client:supports_method(methods.textDocument_documentHighlight) then
+    --     local under_cursor_highlights_group =
+    --         vim.api.nvim_create_augroup(user .. '/cursor_highlights', { clear = false })
+    --     vim.api.nvim_create_autocmd({ 'CursorHold', 'InsertLeave' }, {
+    --         group = under_cursor_highlights_group,
+    --         desc = 'Highlight references under the cursor',
+    --         buffer = bufnr,
+    --         callback = vim.lsp.buf.document_highlight,
+    --     })
+    --     vim.api.nvim_create_autocmd({ 'CursorMoved', 'InsertEnter', 'BufLeave' }, {
+    --         group = under_cursor_highlights_group,
+    --         desc = 'Clear highlight references',
+    --         buffer = bufnr,
+    --         callback = vim.lsp.buf.clear_references,
+    --     })
+    -- end
 
     -- if client:supports_method(methods.textDocument_documentColor) then
     --     vim.lsp.document_color.enable(true, bufnr)

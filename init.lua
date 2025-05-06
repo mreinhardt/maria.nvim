@@ -39,8 +39,8 @@ require('lazy').setup(plugins, {
     ui = { border = 'rounded' },
     dev = { path = vim.g.projects_dir },
     install = {
-        -- Automatically install on startup
-        missing = true,
+        -- Disable automatically install on startup
+        missing = false,
     },
     -- Don't bother me when tweaking plugins
     change_detection = { notify = false },

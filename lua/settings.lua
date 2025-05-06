@@ -27,7 +27,7 @@ vim.opt.showmode = false
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
--- Minimal number of screen lines to keep above and below the cursor
+-- Minimum number of screen lines to keep above and below the cursor
 vim.opt.scrolloff = 4
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
