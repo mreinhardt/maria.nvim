@@ -21,7 +21,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp = vim.opt.rtp ^ lazypath
 
----@type LazySpec
+--@type LazySpec
 local plugins = 'plugins'
 
 -- General setup and goodies

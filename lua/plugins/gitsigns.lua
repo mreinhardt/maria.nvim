@@ -70,6 +70,12 @@ return {
                         cwd = vim.b.gitsigns_status_dict.root,
                     })
                 end, 'Tig')
+
+                -- CUSTOM: Remove exit autocmds because they're super slow, not sure why
+                vim.api.nvim_clear_autocmds {
+                    event = { 'BufFilePre', 'BufFilePost', 'VimLeavePre' },
+                    group = 'gitsigns',
+                }
             end,
         },
     },
