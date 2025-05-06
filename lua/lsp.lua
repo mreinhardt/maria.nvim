@@ -90,9 +90,9 @@ local function on_attach(client, bufnr)
         })
     end
 
-    if client:supports_method(methods.textDocument_documentColor) then
-        vim.lsp.document_color.enable(true, bufnr)
-    end
+    -- if client:supports_method(methods.textDocument_documentColor) then
+    --     vim.lsp.document_color.enable(true, bufnr)
+    -- end
 
     if client:supports_method(methods.textDocument_inlayHint) then
         local inlay_hints_group = vim.api.nvim_create_augroup(user .. '/toggle_inlay_hints', { clear = false })

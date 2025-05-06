@@ -7,3 +7,7 @@ Initially based off [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim.
 ## Getting Started
 
 [The Only Video You Need to Get Started with Neovim](https://youtu.be/m8C0Cq9Uv9o)
+
+## LSP
+
+Installation instructions in each LSP file.

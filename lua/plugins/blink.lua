@@ -23,6 +23,7 @@ return {
                 },
                 documentation = { auto_show = true },
             },
+            fuzzy = { implementation = 'lua' },
             snippets = { preset = 'luasnip' },
             -- Disable command line completion:
             cmdline = { enabled = false },
