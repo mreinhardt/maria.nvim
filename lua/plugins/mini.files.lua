@@ -25,6 +25,16 @@ local function map_split(buf_id, lhs, direction)
     vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = 'Split ' .. string.sub(direction, 12) })
 end
 
+local function explore_files()
+    local bufname = vim.api.nvim_buf_get_name(0)
+    local path = vim.fn.fnamemodify(bufname, ':p')
+
+    -- Noop if the buffer isn't valid.
+    if path and vim.uv.fs_stat(path) then
+        require('mini.files').open(bufname, false)
+    end
+end
+
 -- File explorer.
 return {
     {
@@ -32,16 +42,13 @@ return {
         lazy = false,
         keys = {
             {
-                '<leader>e',
-                function()
-                    local bufname = vim.api.nvim_buf_get_name(0)
-                    local path = vim.fn.fnamemodify(bufname, ':p')
-
-                    -- Noop if the buffer isn't valid.
-                    if path and vim.uv.fs_stat(path) then
-                        require('mini.files').open(bufname, false)
-                    end
-                end,
+                '<Leader>e',
+                explore_files,
+                desc = 'File explorer',
+            },
+            {
+                '<Leader>o',
+                explore_files,
                 desc = 'File explorer',
             },
         },

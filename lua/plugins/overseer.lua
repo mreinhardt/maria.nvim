@@ -36,12 +36,12 @@ return {
         },
         keys = {
             {
-                '<leader>ot',
+                '<leader>Ot',
                 '<cmd>OverseerToggle<cr>',
                 desc = 'Toggle task window',
             },
             {
-                '<leader>o<',
+                '<leader>O<',
                 function()
                     local overseer = require 'overseer'
 
@@ -56,7 +56,7 @@ return {
                 desc = 'Restart last task',
             },
             {
-                '<leader>or',
+                '<leader>Or',
                 function()
                     local overseer = require 'overseer'
 
