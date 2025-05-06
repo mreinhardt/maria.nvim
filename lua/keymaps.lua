@@ -4,48 +4,39 @@
 vim.keymap.set('n', '<Leader>ze', ':e ~/.zsh<CR>', { desc = 'Edit zsh files' })
 
 -- Toggles
-vim.keymap.set('n', '<Leader>#', ':setlocal number! relativenumber!<CR>')
-vim.keymap.set('n', '<Leader>>', ':set paste!<CR>:set paste?<CR>')
-vim.keymap.set('n', '<Leader><', ':setlocal wrap!<CR>:setlocal wrap?<CR>')
+vim.keymap.set('n', '<Leader>#', ':setlocal number! relativenumber!<CR>', { desc = 'Toggle line numbers' })
+vim.keymap.set('n', '<Leader>>', ':set paste!<CR>:set paste?<CR>', { desc = 'Toggle paste mode' })
+vim.keymap.set('n', '<Leader><', ':setlocal wrap!<CR>:setlocal wrap?<CR>', { desc = 'Toggle wrap' })
 
 -- Files
-vim.keymap.set('n', '<Leader>F', ':file<CR>')
-vim.keymap.set('n', '<Leader>o', ':Explore<CR>')
-vim.keymap.set('n', '<Leader>O', ':Yazi<CR>')
-
--- Quicker jump to top or bottom
-vim.keymap.set('n', '<CR>', 'G')
-vim.keymap.set('n', '<BS>', 'gg')
+vim.keymap.set('n', '<Leader>F', ':file<CR>', { desc = 'Display filename' })
 
 -- Tag jump
-vim.keymap.set('n', '<Leader>g', 'g<C-]>')
+vim.keymap.set('n', '<Leader>g', 'g<C-]>', { desc = 'Jump to tag' })
 
 -- Splits
-vim.keymap.set('n', '<Leader>sh', ':split<CR>')
-vim.keymap.set('n', '<Leader>sv', ':vsplit<CR>')
-vim.keymap.set('n', '<Leader>sH', '<C-w>t<C-w>K')
-vim.keymap.set('n', '<Leader>sV', '<C-w>t<C-w>H')
+vim.keymap.set('n', '<Leader>sh', ':split<CR>', { desc = 'Create horizontal split' })
+vim.keymap.set('n', '<Leader>sv', ':vsplit<CR>', { desc = 'Create vertical split' })
+vim.keymap.set('n', '<Leader>sH', '<C-w>t<C-w>K', { desc = 'Change layout to horizontal split' })
+vim.keymap.set('n', '<Leader>sV', '<C-w>t<C-w>H', { desc = 'Change layout to veritcal split' })
 
 -- Buffer movement
-vim.keymap.set('n', '<Leader>.', ':bn<CR>')
-vim.keymap.set('n', '<Leader>,', ':bp<CR>')
-vim.keymap.set('n', '<Leader>b', ':ls<CR>:b<Space>')
+vim.keymap.set('n', '<Leader>.', ':bn<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<Leader>,', ':bp<CR>', { desc = 'Previous buffer' })
+vim.keymap.set('n', '<Leader>bs', ':ls<CR>:b<Space>', { desc = 'List buffers' })
 
 -- Move line position
-vim.keymap.set('n', '<Leader>j', ':m .+1<CR>==')
-vim.keymap.set('n', '<Leader>k', ':m .-2<CR>==')
-vim.keymap.set('v', '<Leader>j', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', '<Leader>k', ":m '<-2<CR>gv=gv")
-
--- Close HTML tags
-vim.keymap.set('i', '<C-c>', '</<C-X><C-O><C-X><Esc>F<i', { silent = true })
+vim.keymap.set('n', '<Leader>j', ':m .+1<CR>==', { desc = 'Move line content down' })
+vim.keymap.set('n', '<Leader>k', ':m .-2<CR>==', { desc = 'Move line content up' })
+vim.keymap.set('v', '<Leader>j', ":m '>+1<CR>gv=gv", { desc = 'Move visual selection content down a line' })
+vim.keymap.set('v', '<Leader>k', ":m '<-2<CR>gv=gv", { desc = 'Move visual selection content up a line' })
 
 -- Toggle tab style
-vim.keymap.set('n', '<Leader>tt', ':set noet ci pi sts=0 sw=4 ts=4<CR>')
-vim.keymap.set('n', '<Leader>ts', ':set et noci nopi sts=4 sw=4 ts=4<CR>')
+vim.keymap.set('n', '<Leader>tt', ':set noet ci pi sts=0 sw=4 ts=4<CR>', { desc = 'Change tab indent to tab' })
+vim.keymap.set('n', '<Leader>ts', ':set et noci nopi sts=4 sw=4 ts=4<CR>', { desc = 'Change tab indent to spaces' })
 
--- Trim whitespace
-vim.keymap.set('n', '<Leader>wd', ':%s/\\s\\+$//g<CR>')
+-- Trim trailing whitespace
+vim.keymap.set('n', '<Leader>tw', ':%s/\\s\\+$//g<CR>', { desc = 'Trim trailing whitespace' })
 
 -- emacs style command line movements
 vim.keymap.set('c', '<C-a>', '<Home>')
@@ -63,7 +54,7 @@ vim.keymap.set('c', '<C-g>', '<C-c>')
 vim.keymap.set('c', '<C-a>', '<Home>')
 
 -- Toglge splelchek
-vim.keymap.set('n', '<Leader>S', ':setlocal spell! spelllang=en_us<CR>')
+vim.keymap.set('n', '<Leader>S', ':setlocal spell! spelllang=en_us<CR>', { desc = 'Toglge splelchek' })
 
 -- ?
 -- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
@@ -85,14 +76,14 @@ vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
 
 -- Paste and re-yank visual selection
-vim.keymap.set('n', '<Leader>p', 'pgvy')
-vim.keymap.set('n', '<Leader>P', 'Pgvy')
+vim.keymap.set('n', '<Leader>p', 'pgvy', { desc = 'Paste ahead and keep text' })
+vim.keymap.set('n', '<Leader>P', 'Pgvy', { desc = 'Paste behind and keep text' })
 
--- Redraw interface
-vim.keymap.set('n', '<Leader>r', ':redraw!<CR>')
+-- Redraw screen
+vim.keymap.set('n', '<Leader>r', ':redraw!<CR>', { desc = 'Redraw screen' })
 
 -- Open the package manager
-vim.keymap.set('n', '<leader>L', '<cmd>Lazy<cr>', { desc = 'Lazy' })
+vim.keymap.set('n', '<leader>L', '<cmd>Lazy<cr>', { desc = 'Open Lazy' })
 
 -- Switch between windows
 vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to the left window', remap = true })
@@ -122,16 +113,17 @@ vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
 vim.keymap.set({ 's', 'i', 'n', 'v' }, '<C-s>', '<esc>:w<cr>', { desc = 'Exit insert mode and save changes.' })
 vim.keymap.set({ 's', 'i', 'n', 'v' }, '<C-S-s>', '<esc>:wa<cr>', { desc = 'Exit insert mode and save all changes.' })
 
--- Writes and quits
+-- Other writes and quits
 vim.keymap.set('n', '<Leader>q', ':q<CR>', { desc = 'Quit buffer' })
 vim.keymap.set('n', '<Leader>Q', ':qa<CR>', { desc = 'Quit all buffers' })
 vim.keymap.set('n', '<Leader>w', ':w<CR>', { desc = 'Write buffer' })
 vim.keymap.set('n', '<Leader>W', ':wa<CR>', { desc = 'Write all buffers' })
 
 -- Quickly go to the end of the line while in insert mode
-vim.keymap.set({ 'i', 'c' }, '<C-l>', '<C-o>A', { desc = 'Go to the end of the line' })
+vim.keymap.set({ 'i', 'c' }, '<C-e>', '<C-o>A', { desc = 'Go to the end of the line' })
+vim.keymap.set({ 'i', 'c' }, '<C-a>', '<C-o>I', { desc = 'Go to the start of the line' })
 
 -- Floating terminal
 vim.keymap.set({ 'n', 't' }, '<leader>T', function()
-    require('float_term').float_term('fish', { cwd = vim.fn.expand '%:p:h' })
+    require('float_term').float_term('zsh', { cwd = vim.fn.expand '%:p:h' })
 end, { desc = 'Toggle floating terminal' })
