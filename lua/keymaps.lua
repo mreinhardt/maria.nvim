@@ -106,6 +106,9 @@ vim.keymap.set({ 'i', 's', 'n' }, '<esc>', function()
     return '<esc>'
 end, { desc = 'Escape, clear hlsearch, and stop snippet session', expr = true })
 
+-- Clear search
+vim.keymap.set('n', '<Leader>/', ':let @/ = ""<CR>', { desc = 'Clear search pattern' })
+
 -- Undo/Redo pairs
 vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
 

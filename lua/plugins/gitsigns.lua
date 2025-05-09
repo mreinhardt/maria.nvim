@@ -65,11 +65,11 @@ return {
                     })
                 end, 'Lazygit')
                 nmap('<leader>gt', function()
-                    require('float_term').float_term('tig', {
+                    require('float_term').float_term({ 'tig', 'status' }, {
                         size = { width = 0.85, height = 0.8 },
                         cwd = vim.b.gitsigns_status_dict.root,
                     })
-                end, 'Tig')
+                end, 'Tig Status')
 
                 -- CUSTOM: Remove exit autocmds because they're super slow, not sure why
                 vim.api.nvim_clear_autocmds {

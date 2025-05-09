@@ -18,8 +18,8 @@ vim.opt.number = true
 -- Set relative line numbers
 vim.opt.relativenumber = true
 
--- Disable mouse mode
-vim.opt.mouse = '' -- 'a' enables
+-- Set mouse mode
+vim.opt.mouse = '' -- 'a' enables, '' disables
 
 -- Set show mode (false if already in the status line)
 vim.opt.showmode = false
