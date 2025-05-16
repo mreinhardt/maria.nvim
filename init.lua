@@ -30,7 +30,6 @@ require 'settings'
 require 'keymaps'
 require 'commands'
 require 'autocmds'
-require 'statusline'
 require 'winbar'
 require 'lsp'
 
@@ -69,5 +68,10 @@ require('lazy').setup(plugins, {
 
 -- Colorscheme
 vim.cmd.colorscheme 'moonlight'
+
+-- Wrap up and final goodies
+-- (ORDER MATTERS HERE)
+require 'options'
+require 'statusline'
 
 -- vim: ts=2 sts=2 sw=2 et

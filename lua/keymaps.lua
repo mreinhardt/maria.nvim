@@ -23,7 +23,16 @@ vim.keymap.set('n', '<Leader>sV', '<C-w>t<C-w>H', { desc = 'Change layout to ver
 -- Buffer movement
 vim.keymap.set('n', '<Leader>.', ':bn<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '<Leader>,', ':bp<CR>', { desc = 'Previous buffer' })
-vim.keymap.set('n', '<Leader>bs', ':ls<CR>:b<Space>', { desc = 'List buffers' })
+vim.keymap.set('n', '<Leader>l', ':ls<CR>:b<Space>', { desc = 'List buffers and select' })
+vim.keymap.set('n', '<Leader>1', ':1b<CR>', { desc = 'Go to buffer 1' })
+vim.keymap.set('n', '<Leader>2', ':2b<CR>', { desc = 'Go to buffer 2' })
+vim.keymap.set('n', '<Leader>3', ':3b<CR>', { desc = 'Go to buffer 3' })
+vim.keymap.set('n', '<Leader>4', ':4b<CR>', { desc = 'Go to buffer 4' })
+vim.keymap.set('n', '<Leader>5', ':5b<CR>', { desc = 'Go to buffer 5' })
+vim.keymap.set('n', '<Leader>6', ':6b<CR>', { desc = 'Go to buffer 6' })
+vim.keymap.set('n', '<Leader>7', ':7b<CR>', { desc = 'Go to buffer 7' })
+vim.keymap.set('n', '<Leader>8', ':8b<CR>', { desc = 'Go to buffer 8' })
+vim.keymap.set('n', '<Leader>9', ':9b<CR>', { desc = 'Go to buffer 9' })
 
 -- Move line position
 vim.keymap.set('n', '<Leader>j', ':m .+1<CR>==', { desc = 'Move line content down' })
