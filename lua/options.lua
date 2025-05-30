@@ -3,6 +3,8 @@ if vim.g.colors_name == 'moonlight' then
     local colors = require 'moonlight.colors'
     local theme = require 'moonlight.theme'
     local editor = theme.loadEditor()
+
+    -- Statusline
     vim.api.nvim_set_hl(0, 'StatuslineModeNormal', { fg = editor.NormalMode == nil and colors.accent or (editor.NormalMode.fg or colors.accent) })
     vim.api.nvim_set_hl(0, 'StatuslineModePending', { fg = editor.PendingMode == nil and colors.yellow or (editor.PendingMode.fg or colors.yellow) })
     vim.api.nvim_set_hl(0, 'StatuslineModeVisual', { fg = editor.VisualMode == nil and colors.purple or (editor.VisualMode.fg or colors.purple) })

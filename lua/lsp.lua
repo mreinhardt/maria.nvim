@@ -23,7 +23,8 @@ local function on_attach(client, bufnr)
         vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
     end
 
-    require('lightbulb').attach_lightbulb(bufnr, client.id)
+    -- Disabling for now
+    -- require('lightbulb').attach_lightbulb(bufnr, client.id)
 
     keymap('gra', '<cmd>FzfLua lsp_code_actions<cr>', 'vim.lsp.buf.code_action()', { 'n', 'x' })
 

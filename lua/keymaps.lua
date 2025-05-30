@@ -70,9 +70,9 @@ vim.keymap.set('n', '<Leader>S', ':setlocal spell! spelllang=en_us<CR>', { desc 
 
 -- [[NEW]]
 
--- Remap for dealing with word wrap and adding jumps to the jumplist
-vim.keymap.set('n', 'j', [[(v:count > 1 ? 'm`' . v:count : 'g') . 'j']], { expr = true })
-vim.keymap.set('n', 'k', [[(v:count > 1 ? 'm`' . v:count : 'g') . 'k']], { expr = true })
+-- Remap for dealing with word wrap and adding jumps to the jumplist and centering
+vim.keymap.set('n', 'j', [[(v:count > 1 ? 'm`' . v:count : 'g') . 'jzz']], { expr = true })
+vim.keymap.set('n', 'k', [[(v:count > 1 ? 'm`' . v:count : 'g') . 'kzz']], { expr = true })
 
 -- Keeping the cursor centered
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll downwards' })
@@ -83,6 +83,10 @@ vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous result' })
 -- Indent while remaining in visual mode
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
+
+-- Indent single line without visual mode
+vim.keymap.set('n', '<<', 'V<')
+vim.keymap.set('n', '>>', 'V>')
 
 -- Paste and re-yank visual selection
 vim.keymap.set('n', '<Leader>p', 'pgvy', { desc = 'Paste ahead and keep text' })
@@ -129,7 +133,9 @@ vim.keymap.set({ 's', 'i', 'n', 'v' }, '<C-S-s>', '<esc>:wa<cr>', { desc = 'Exit
 vim.keymap.set('n', '<Leader>q', ':q<CR>', { desc = 'Close single buffer' })
 vim.keymap.set('n', '<Leader>Q', ':qa<CR>', { desc = 'Quit all buffers' })
 vim.keymap.set('n', '<Leader>w', ':w<CR>', { desc = 'Write buffer' })
-vim.keymap.set('n', '<Leader>W', ':wa<CR>', { desc = 'Write all buffers' })
+vim.keymap.set('n', '<Leader>A', ':wa<CR>', { desc = 'Write all buffers' })
+vim.keymap.set('n', '<Leader>W', ':wa<CR>:qa<CR>', { desc = 'Write all buffers and quit' })
+vim.keymap.set('n', '<Leader>X', ':wa<CR>:qa<CR>', { desc = 'Write all buffers and quit' })
 
 -- Quickly go to the end of the line while in insert mode
 vim.keymap.set({ 'i', 'c' }, '<C-e>', '<C-o>A', { desc = 'Go to the end of the line' })
