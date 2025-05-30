@@ -1,6 +1,10 @@
 local solid_bar = require('icons').misc.vertical_bar
 local dashed_bar = require('icons').misc.dashed_bar
 
+local center_cursor = function()
+    vim.api.nvim_feedkeys('zz', 't', false)
+end
+
 -- Adds git releated signs to the gutter, as well as utilities for managing changes.
 return {
     {
@@ -51,8 +55,14 @@ return {
                 nmap('<leader>go', function()
                     gitlinker.get_buf_range_url('n', { action_callback = require('gitlinker.actions').open_in_browser })
                 end, 'Open in browser')
-                nmap('[g', gs.prev_hunk, 'Previous hunk')
-                nmap(']g', gs.next_hunk, 'Next hunk')
+                nmap('[g', function()
+                    gs.prev_hunk()
+                    center_cursor()
+                end, 'Previous hunk')
+                nmap(']g', function()
+                    gs.next_hunk()
+                    center_cursor()
+                end, 'Next hunk')
                 nmap('<leader>gR', gs.reset_buffer, 'Reset buffer')
                 nmap('<leader>gb', gs.blame_line, 'Blame line')
                 nmap('<leader>gp', gs.preview_hunk, 'Preview hunk')
@@ -71,11 +81,11 @@ return {
                     })
                 end, 'Tig Status')
 
-                -- CUSTOM: Remove exit autocmds because they're super slow, not sure why
-                vim.api.nvim_clear_autocmds {
-                    event = { 'BufFilePre', 'BufFilePost', 'VimLeavePre' },
-                    group = 'gitsigns',
-                }
+                -- CUSTOM: Can remove exit autocmds if they're super slow, unsure of side-effects
+                -- vim.api.nvim_clear_autocmds {
+                --     event = { 'BufFilePre', 'BufFilePost', 'VimLeavePre' },
+                --     group = 'gitsigns',
+                -- }
             end,
         },
     },

@@ -7,6 +7,7 @@ return {
             notify_on_error = false,
             formatters_by_ft = {
                 -- c = { name = 'clangd', timeout_ms = 500, lsp_format = 'prefer' },
+                go = { 'gofmt', 'golangci-lint', timeout_ms = 500 },
                 javascript = { 'prettier', name = 'dprint', timeout_ms = 500, lsp_format = 'fallback' },
                 javascriptreact = { 'prettier', name = 'dprint', timeout_ms = 500, lsp_format = 'fallback' },
                 json = { 'prettier', stop_on_first = true, name = 'dprint', timeout_ms = 500 },
@@ -14,8 +15,9 @@ return {
                 -- less = { 'prettier', timeout_ms = 500 },
                 lua = { 'stylua', timeout_ms = 500 },
                 markdown = { 'prettier', timeout_ms = 500 },
+                python = { 'ruff_format', timeout_ms = 500 },
                 -- rust = { name = 'rust_analyzer', timeout_ms = 500, lsp_format = 'prefer' },
-                scss = { 'prettier', timeout_ms = 500 },
+                -- scss = { 'prettier', timeout_ms = 500 },
                 sh = { 'shfmt', timeout_ms = 500 },
                 typescript = { 'prettier', name = 'dprint', timeout_ms = 500, lsp_format = 'fallback' },
                 typescriptreact = { 'prettier', name = 'dprint', timeout_ms = 500, lsp_format = 'fallback' },
