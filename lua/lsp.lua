@@ -191,6 +191,8 @@ vim.diagnostic.config {
     },
     -- Disable signs in the gutter
     signs = false,
+    -- Disable missing parameters
+    missing_parameters = false,
 }
 
 -- Override the virtual text diagnostic handler so that the most severe diagnostic is shown first

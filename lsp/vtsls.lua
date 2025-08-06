@@ -1,5 +1,10 @@
 -- Install with: npm install -g @vtsls/language-server
 
+local ignored_codes = {
+    [6133] = true,
+    [6385] = true,
+}
+
 local jsts_settings = {
     suggest = { completeFunctionCalls = true },
     inlayHints = {
@@ -41,6 +46,39 @@ return {
             cb(vim.fn.fnamemodify(ts_root, ':h'))
         end
     end,
+    handlers = {
+        -- filter out ignored diagnostics
+        ['textDocument/publishDiagnostics'] = function(_, result, ctx)
+            -- require 'vim.lsp.log'
+            if result and result.diagnostics then
+                result.diagnostics = vim.iter(result.diagnostics)
+                    :filter(function(d)
+                        -- Ignore diagnostics with specific codes
+                        if not (ignored_codes[d.code] == nil) then
+                            return false
+                        end
+                        return true
+
+                        -- -- Ignore diagnostics with @ts-ignore comments
+                        -- if d.bufnr == nil then
+                        --     return true
+                        -- end
+                        -- local start_line = d.lnum
+                        -- local end_line = d.end_lnum
+                        -- local lines = vim.api.nvim_buf_get_lines(d.bufnr, start_line, end_line + 1, false)
+                        -- local source_code_text = table.concat(lines, '\n')
+                        -- local msg = string.format('%s: %s', 'source_code_text', source_code_text)
+                        -- -- vim.notify(msg, vim.log.levels.INFO)
+                        -- -- vim.notify('source_code_text: ' .. source_code_text, vim.log.levels.INFO)
+                        -- print(msg)
+                        -- return string.find(source_code_text, '@ts-ignore') == nil
+                    end)
+                    :totable()
+            end
+
+            return vim.lsp.handlers['textDocument/publishDiagnostics'](_, result, ctx)
+        end,
+    },
     settings = {
         typescript = jsts_settings,
         javascript = jsts_settings,
