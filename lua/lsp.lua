@@ -60,19 +60,19 @@ local function on_attach(client, bufnr)
         end, 'Peek definition')
     end
 
-    if client:supports_method(methods.textDocument_signatureHelp) then
-        local blink_window = require 'blink.cmp.completion.windows.menu'
-        local blink = require 'blink.cmp'
-
-        keymap('<C-k>', function()
-            -- Close the completion menu first (if open)
-            if blink_window.win:is_open() then
-                blink.hide()
-            end
-
-            vim.lsp.buf.signature_help()
-        end, 'Signature help', 'i')
-    end
+    -- if client:supports_method(methods.textDocument_signatureHelp) then
+    --     local blink_window = require 'blink.cmp.completion.windows.menu'
+    --     local blink = require 'blink.cmp'
+    --
+    --     keymap('<C-k>', function()
+    --         -- Close the completion menu first (if open)
+    --         if blink_window.win:is_open() then
+    --             blink.hide()
+    --         end
+    --
+    --         vim.lsp.buf.signature_help()
+    --     end, 'Signature help', 'i')
+    -- end
 
     -- NOTE: I don't like this, but you might
     -- if client:supports_method(methods.textDocument_documentHighlight) then
